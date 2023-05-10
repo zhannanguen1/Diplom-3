@@ -1,6 +1,9 @@
 package Registration;
 
+import com.google.gson.Gson;
 import io.qameta.allure.Description;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,6 +16,8 @@ import page.objects.LoginPage;
 import page.objects.RegistrationPage;
 
 import java.util.Random;
+
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
     private WebDriver driver;
@@ -41,6 +46,22 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
         objLoginPage.waitLoginPage();
         new WebDriverWait(driver, 3);
         Assert.assertEquals(LoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
+
+        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
+        API.LoginUser loginUser = new API.LoginUser(email, password);
+        Response response = API.UserClient.postApiAuthLogin(loginUser);
+        response.then().assertThat().body("success", equalTo(true))
+                .and()
+                .statusCode(200);
+        String responseString = response.body().asString();
+        Gson gson = new Gson();
+        API.LoginUserResponse loginUserResponse = gson.fromJson(responseString, API.LoginUserResponse.class);
+        String accessToken = loginUserResponse.getAccessToken();
+        API.UserClient.deleteApiAuthUser(accessToken).then().assertThat().body("success", equalTo(true))
+                .and()
+                .body("message", equalTo("User successfully removed"))
+                .and()
+                .statusCode(202);
     }
     @After
     public void tearDown() {
