@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: LogIn.LoginTest
+Test set: Constructor.ConstructorTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.836 s - in LogIn.LoginTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.672 s - in Constructor.ConstructorTest

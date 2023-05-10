@@ -17,9 +17,10 @@ import page.objects.PersonalAccountPage;
 @RunWith(Parameterized.class)
 public class LogoutTest {
     private WebDriver driver;
-    private String webDriver;
-    private String driverPath;
-    public LogoutTest(String webDriver, String driverPath){
+    private final String webDriver;
+    private final String driverPath;
+
+    public LogoutTest(String webDriver, String driverPath) {
         this.webDriver = webDriver;
         this.driverPath = driverPath;
     }
@@ -38,9 +39,10 @@ public class LogoutTest {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
     }
+
     @Test
     @Description("Выход из аккаунта")
-    public void logoutTest(){
+    public void logoutTest() {
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.fillAllFieldsAndClick(true, "zhanna.test@mail.ru", "Zhanna12345");
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
@@ -52,8 +54,9 @@ public class LogoutTest {
         objLoginPage.waitLoginPage();
         Assert.assertEquals(LoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
     }
+
     @After
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 

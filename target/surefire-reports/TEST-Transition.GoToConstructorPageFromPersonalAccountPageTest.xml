@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="LogIn.LoginTest" time="36.836" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Transition.GoToConstructorPageFromPersonalAccountPageTest" time="21.521" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,12 +61,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="LoginFromPersonalAccount[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe]" classname="LogIn.LoginTest" time="4.129"/>
-  <testcase name="LoginToAccount[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe]" classname="LogIn.LoginTest" time="4.755"/>
-  <testcase name="LogInFromLogInAccountButtonOnLoginPageTest[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe]" classname="LogIn.LoginTest" time="3.486"/>
-  <testcase name="loginFromRecoveryPage[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe]" classname="LogIn.LoginTest" time="4.756"/>
-  <testcase name="LoginFromPersonalAccount[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/yandexdriver-23.3.0.2247-win/yandexdriver.exe]" classname="LogIn.LoginTest" time="4.824"/>
-  <testcase name="LoginToAccount[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/yandexdriver-23.3.0.2247-win/yandexdriver.exe]" classname="LogIn.LoginTest" time="5.291"/>
-  <testcase name="LogInFromLogInAccountButtonOnLoginPageTest[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/yandexdriver-23.3.0.2247-win/yandexdriver.exe]" classname="LogIn.LoginTest" time="4.319"/>
-  <testcase name="loginFromRecoveryPage[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/yandexdriver-23.3.0.2247-win/yandexdriver.exe]" classname="LogIn.LoginTest" time="5.275"/>
+  <testcase name="GoToConstructorPageFromConstructorButton[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe]" classname="Transition.GoToConstructorPageFromPersonalAccountPageTest" time="4.892"/>
+  <testcase name="GoToConstructorPageFromLogoButton[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe]" classname="Transition.GoToConstructorPageFromPersonalAccountPageTest" time="5.014"/>
+  <testcase name="GoToConstructorPageFromConstructorButton[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/yandexdriver-23.3.0.2247-win/yandexdriver.exe]" classname="Transition.GoToConstructorPageFromPersonalAccountPageTest" time="5.692"/>
+  <testcase name="GoToConstructorPageFromLogoButton[Выбор браузера: webdriver.chrome.driver,C:/Users/User/Downloads/yandexdriver-23.3.0.2247-win/yandexdriver.exe]" classname="Transition.GoToConstructorPageFromPersonalAccountPageTest" time="5.922"/>
 </testsuite>

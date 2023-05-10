@@ -1,9 +1,7 @@
-Constructor\JumpToBunsTest.class
 LogIn\LoginTest.class
 Registration\InvalidPasswordTest.class
+Constructor\ConstructorTest.class
 LogOut\LogoutTest.class
 Transition\GoToPersonalAccountTest.class
-Constructor\JumpToSaucesTest.class
 Registration\CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest.class
 Transition\GoToConstructorPageFromPersonalAccountPageTest.class
-Constructor\JumpToFillingsTest.class

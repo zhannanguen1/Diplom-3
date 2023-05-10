@@ -1,9 +1,9 @@
 package API;
-import com.google.gson.Gson;
+
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
+
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 public class UserClient {
 
@@ -13,6 +13,7 @@ public class UserClient {
     public UserClient() {
     }
 
+    @Step("Создание юзера")
     public static Response postApiAuthLogin(LoginUser loginUser) {
         return given()
                 .header("Content-type", "application/json")
@@ -22,6 +23,7 @@ public class UserClient {
                 .post(API_AUTH_LOGIN);
     }
 
+    @Step("Удаление юзера")
     public static Response deleteApiAuthUser(String accessToken) {
         return given()
                 .header("Content-type", "application/json")

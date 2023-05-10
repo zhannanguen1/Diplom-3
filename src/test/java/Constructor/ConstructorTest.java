@@ -14,9 +14,10 @@ import page.objects.ConstructorPage;
 @RunWith(Parameterized.class)
 public class ConstructorTest {
     private WebDriver driver;
-    private String webDriver;
-    private String driverPath;
-    public ConstructorTest(String webDriver, String driverPath){
+    private final String webDriver;
+    private final String driverPath;
+
+    public ConstructorTest(String webDriver, String driverPath) {
         this.webDriver = webDriver;
         this.driverPath = driverPath;
     }
@@ -34,38 +35,42 @@ public class ConstructorTest {
         System.setProperty(webDriver, driverPath);
         driver = new ChromeDriver();
     }
+
     @Test
     @Description("Проверка вкладки Булки")
-    public void checkBunTab(){
+    public void checkBunTab() {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
         objConstructorPage.clickOnSauceTab();
         objConstructorPage.clickOnBunTab();
         objConstructorPage.checkSectionFiling();
         boolean actualResult = objConstructorPage.checkSectionBun();
-        Assert.assertEquals(true, actualResult);
+        Assert.assertTrue(actualResult);
     }
+
     @Test
     @Description("Проверка вкладки Соусы")
-    public void checkSauceTab(){
+    public void checkSauceTab() {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
         objConstructorPage.clickOnSauceTab();
         objConstructorPage.checkSectionFiling();
         boolean actualResult = objConstructorPage.checkSectionSauce();
-        Assert.assertEquals(true, actualResult);
+        Assert.assertTrue(actualResult);
     }
+
     @Test
     @Description("Проверка вкладки Начинки")
-    public void checkFilingTab(){
+    public void checkFilingTab() {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
         objConstructorPage.clickOnSauceTab();
         objConstructorPage.clickOnBunTab();
         objConstructorPage.checkSectionFiling();
         boolean actualResult = objConstructorPage.checkSectionFiling();
-        Assert.assertEquals(true, actualResult);
+        Assert.assertTrue(actualResult);
     }
+
     @After
     public void tearDown() {
         driver.quit();

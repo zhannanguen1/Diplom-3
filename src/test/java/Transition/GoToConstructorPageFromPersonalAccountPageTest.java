@@ -17,9 +17,10 @@ import page.objects.PersonalAccountPage;
 @RunWith(Parameterized.class)
 public class GoToConstructorPageFromPersonalAccountPageTest {
     private WebDriver driver;
-    private String webDriver;
-    private String driverPath;
-    public GoToConstructorPageFromPersonalAccountPageTest(String webDriver, String driverPath){
+    private final String webDriver;
+    private final String driverPath;
+
+    public GoToConstructorPageFromPersonalAccountPageTest(String webDriver, String driverPath) {
         this.webDriver = webDriver;
         this.driverPath = driverPath;
     }
@@ -38,9 +39,10 @@ public class GoToConstructorPageFromPersonalAccountPageTest {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
     }
+
     @Test
     @Description("Проверка перехода на главную страницу после клика по кнопке 'Конструктор'")
-    public void GoToConstructorPageFromConstructorButton(){
+    public void GoToConstructorPageFromConstructorButton() {
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.fillAllFieldsAndClick(true, "zhanna.test@mail.ru", "Zhanna12345");
         objLoginPage.waitLoginPage();
@@ -52,9 +54,10 @@ public class GoToConstructorPageFromPersonalAccountPageTest {
         constructorPage.waitForLoadPage();
         Assert.assertEquals(ConstructorPage.CONSTRUCTOR_PAGE_URL, driver.getCurrentUrl());
     }
+
     @Test
     @Description("Проверка перехода на главную страницу после клика по Лого")
-    public void GoToConstructorPageFromLogoButton(){
+    public void GoToConstructorPageFromLogoButton() {
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.fillAllFieldsAndClick(true, "zhanna.test@mail.ru", "Zhanna12345");
         objLoginPage.waitLoginPage();
@@ -66,8 +69,9 @@ public class GoToConstructorPageFromPersonalAccountPageTest {
         constructorPage.waitForLoadPage();
         Assert.assertEquals(ConstructorPage.CONSTRUCTOR_PAGE_URL, driver.getCurrentUrl());
     }
+
     @After
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }

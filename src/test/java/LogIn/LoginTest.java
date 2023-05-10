@@ -16,9 +16,10 @@ import page.objects.RecoverPasswordPage;
 @RunWith(Parameterized.class)
 public class LoginTest {
     private WebDriver driver;
-    private String webDriver;
-    private String driverPath;
-    public LoginTest(String webDriver, String driverPath){
+    private final String webDriver;
+    private final String driverPath;
+
+    public LoginTest(String webDriver, String driverPath) {
         this.webDriver = webDriver;
         this.driverPath = driverPath;
     }
@@ -39,16 +40,16 @@ public class LoginTest {
 
     @Test
     @Description("Вход в аккаунт через кнопку 'Войти' на странице входа")
-    public void LogInFromLogInAccountButtonOnLoginPageTest(){
+    public void LogInFromLogInAccountButtonOnLoginPageTest() {
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.fillAllFieldsAndClick(true, "zhanna.test@mail.ru", "Zhanna12345");
         objLoginPage.waitLoginPage();
-        Assert.assertEquals(objLoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
+        Assert.assertEquals(LoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
     }
 
     @Test
     @Description("Вход в аккаунт через кнопку 'Войти в аккаунт' на главной странице")
-    public void LoginToAccount(){
+    public void LoginToAccount() {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
         objConstructorPage.clickOnLoginToAccountButton();
@@ -57,9 +58,10 @@ public class LoginTest {
         objConstructorPage.waitForLoadPage();
         Assert.assertEquals(ConstructorPage.CONSTRUCTOR_PAGE_URL, driver.getCurrentUrl());
     }
+
     @Test
     @Description("Вход в аккаунт через кнопку 'Личный кабинет' на главной странице")
-    public void LoginFromPersonalAccount(){
+    public void LoginFromPersonalAccount() {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
         objConstructorPage.clickOnPersonalAccountButton();
@@ -68,9 +70,10 @@ public class LoginTest {
         objConstructorPage.waitForLoadPage();
         Assert.assertEquals(ConstructorPage.CONSTRUCTOR_PAGE_URL, driver.getCurrentUrl());
     }
+
     @Test
     @Description("Вход в аккаунт через кнопку 'Войти' на странице восстановления пароля")
-    public void loginFromRecoveryPage(){
+    public void loginFromRecoveryPage() {
         RecoverPasswordPage objRecoverPasswordPage = new RecoverPasswordPage(driver);
         objRecoverPasswordPage.openPageAndClickOnEnterButton();
         LoginPage objLoginPage = new LoginPage(driver);

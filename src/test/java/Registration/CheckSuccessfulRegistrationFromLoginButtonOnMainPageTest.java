@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page.objects.LoginPage;
 import page.objects.RegistrationPage;
@@ -24,9 +23,10 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @RunWith(Parameterized.class)
 public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
     private WebDriver driver;
-    private String webDriver;
-    private String driverPath;
-    public CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest(String webDriver, String driverPath){
+    private final String webDriver;
+    private final String driverPath;
+
+    public CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest(String webDriver, String driverPath) {
         this.webDriver = webDriver;
         this.driverPath = driverPath;
     }
@@ -46,9 +46,10 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
         RegistrationPage registerPage = new RegistrationPage(driver);
         registerPage.open();
     }
+
     @Test
     @Description("Регистрация нового пользователя")
-    public void successRegistrationTest(){
+    public void successRegistrationTest() {
         RegistrationPage objRegistrationPage = new RegistrationPage(driver);
         objRegistrationPage.open();
         Random random = new Random();
@@ -81,6 +82,7 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
                 .and()
                 .statusCode(202);
     }
+
     @After
     public void tearDown() {
         driver.quit();

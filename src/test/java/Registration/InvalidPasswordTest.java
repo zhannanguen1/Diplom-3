@@ -7,20 +7,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import page.objects.RegistrationPage;
 
-import java.util.List;
 import java.util.Random;
 
 @RunWith(Parameterized.class)
 public class InvalidPasswordTest {
     private WebDriver driver;
-    private String webDriver;
-    private String driverPath;
-    public InvalidPasswordTest(String webDriver, String driverPath){
+    private final String webDriver;
+    private final String driverPath;
+
+    public InvalidPasswordTest(String webDriver, String driverPath) {
         this.webDriver = webDriver;
         this.driverPath = driverPath;
     }
@@ -40,9 +39,10 @@ public class InvalidPasswordTest {
         RegistrationPage registerPage = new RegistrationPage(driver);
         registerPage.open();
     }
+
     @Test
     @Description("Регистрация юзера с невалидным паролем")
-    public void FailRegistrationInvalidPassword(){
+    public void FailRegistrationInvalidPassword() {
         RegistrationPage objRegistrationPage = new RegistrationPage(driver);
         objRegistrationPage.open();
         Random random = new Random();
@@ -53,8 +53,10 @@ public class InvalidPasswordTest {
         objRegistrationPage.fillEmailField(email);
         objRegistrationPage.fillPasswordField(password);
         objRegistrationPage.clickOnRegisteredButton();
-        Assert.assertTrue(driver.findElement(By.xpath(".//p[text()='Некорректный пароль']")).isDisplayed());
+        boolean actualResult = objRegistrationPage.checkPassword();
+        Assert.assertTrue(actualResult);
     }
+
     @After
     public void tearDown() {
         driver.quit();

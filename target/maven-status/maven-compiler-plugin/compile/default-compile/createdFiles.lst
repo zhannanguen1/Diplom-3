@@ -7,5 +7,4 @@ page\objects\RegistrationPage.class
 API\LoginUserResponse.class
 API\User.class
 API\CreateUser.class
-API\CreateUserResponse.class
 page\objects\ConstructorPage.class
