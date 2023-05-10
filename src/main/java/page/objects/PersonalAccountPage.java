@@ -12,6 +12,7 @@ public class PersonalAccountPage {
     private final By PROFILE_BUTTON = By.xpath(".//a[text()='Профиль']");
     private final By CONSTRUCTOR_BUTTON = By.xpath(".//p[text()='Конструктор']");
     private final By LOGO = By.xpath(".//div[@class='AppHeader_header__logo__2D0X2']");
+    private final By LOGOUT_BUTTON = By.xpath(".//button[text()='Выход']");
 
     public PersonalAccountPage(WebDriver driver){
         this.driver = driver;
@@ -28,5 +29,8 @@ public class PersonalAccountPage {
     public void waitForLoadPage(){
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.elementToBeClickable(PROFILE_BUTTON));
+    }
+    public void clickOnExitButton(){
+        driver.findElement(LOGOUT_BUTTON).click();
     }
 }
