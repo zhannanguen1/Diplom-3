@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,11 +21,27 @@ import java.util.Random;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
+@RunWith(Parameterized.class)
 public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
     private WebDriver driver;
+    private String webDriver;
+    private String driverPath;
+    public CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest(String webDriver, String driverPath){
+        this.webDriver = webDriver;
+        this.driverPath = driverPath;
+    }
+
+    @Parameterized.Parameters(name = "Выбор браузера: {0},{1}")
+    public static Object[][] getDriver() {
+        return new Object[][]{
+                {"webdriver.chrome.driver", "C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe"},
+                {"webdriver.chrome.driver", "C:/Users/User/Downloads/yandexdriver-23.3.0.2247-win/yandexdriver.exe"}
+        };
+    }
+
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/User/Downloads/chromedriver_win32/chromedriver.exe");
+        System.setProperty(webDriver, driverPath);
         driver = new ChromeDriver();
         RegistrationPage registerPage = new RegistrationPage(driver);
         registerPage.open();

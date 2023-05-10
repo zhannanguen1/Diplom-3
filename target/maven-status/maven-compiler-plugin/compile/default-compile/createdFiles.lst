@@ -1,0 +1,11 @@
+page\objects\PersonalAccountPage.class
+API\LoginUser.class
+page\objects\LoginPage.class
+API\UserClient.class
+page\objects\RecoverPasswordPage.class
+page\objects\RegistrationPage.class
+API\LoginUserResponse.class
+API\User.class
+API\CreateUser.class
+API\CreateUserResponse.class
+page\objects\ConstructorPage.class
