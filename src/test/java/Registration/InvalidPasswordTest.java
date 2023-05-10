@@ -1,6 +1,7 @@
 package Registration;
 
 import io.qameta.allure.Description;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,5 +35,9 @@ public class InvalidPasswordTest {
         objRegistrationPage.fillPasswordField(password);
         objRegistrationPage.clickOnRegisteredButton();
         Assert.assertTrue(driver.findElement(By.xpath(".//p[text()='Некорректный пароль']")).isDisplayed());
+    }
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 }
