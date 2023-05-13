@@ -25,6 +25,7 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
     private WebDriver driver;
     private final String webDriver;
     private final String driverPath;
+    private String accessToken;
 
     public CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest(String webDriver, String driverPath) {
         this.webDriver = webDriver;
@@ -65,7 +66,6 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
         objLoginPage.waitLoginPage();
         new WebDriverWait(driver, 3);
         Assert.assertEquals(LoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
-
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
         API.LoginUser loginUser = new API.LoginUser(email, password);
         Response response = API.UserClient.postApiAuthLogin(loginUser);
@@ -75,7 +75,11 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
         String responseString = response.body().asString();
         Gson gson = new Gson();
         API.LoginUserResponse loginUserResponse = gson.fromJson(responseString, API.LoginUserResponse.class);
-        String accessToken = loginUserResponse.getAccessToken();
+        accessToken = loginUserResponse.getAccessToken();
+
+    }
+    @After
+    public void cleanUp(){
         API.UserClient.deleteApiAuthUser(accessToken).then().assertThat().body("success", equalTo(true))
                 .and()
                 .body("message", equalTo("User successfully removed"))

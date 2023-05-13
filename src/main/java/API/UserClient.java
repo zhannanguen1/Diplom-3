@@ -1,6 +1,7 @@
 package API;
 
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
