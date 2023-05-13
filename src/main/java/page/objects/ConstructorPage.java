@@ -81,4 +81,9 @@ public class ConstructorPage {
         return driver.findElement(VISIBILITY_SECTION_CONSTRUCTOR_BUN).isDisplayed();
     }
 
+    @Step("Проверка отображения страницы конструктора после авторизации")
+    public boolean isConstructorPageDisplayed(){
+        return driver.findElement(CREATE_ORDER).isDisplayed();
+    }
+
 }

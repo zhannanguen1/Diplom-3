@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page.objects.LoginPage;
 import page.objects.RegistrationPage;
 
@@ -64,8 +63,8 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
 
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.waitLoginPage();
-        new WebDriverWait(driver, 3);
-        Assert.assertEquals(LoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
+        objLoginPage.waitLoginPage();
+        Assert.assertTrue(objLoginPage.isLoginPageDisplayed());
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
         API.LoginUser loginUser = new API.LoginUser(email, password);
         Response response = API.UserClient.postApiAuthLogin(loginUser);

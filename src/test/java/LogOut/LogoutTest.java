@@ -52,7 +52,7 @@ public class LogoutTest {
         objPersonalAccountPage.waitForLoadPage();
         objPersonalAccountPage.clickOnExitButton();
         objLoginPage.waitLoginPage();
-        Assert.assertEquals(LoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
+        Assert.assertTrue(objLoginPage.isLoginPageDisplayed());
     }
 
     @After

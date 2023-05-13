@@ -65,7 +65,7 @@ public class ConstructorTest {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
         objConstructorPage.clickOnSauceTab();
-        objConstructorPage.clickOnBunTab();
+        objConstructorPage.clickOnFilingTab();
         objConstructorPage.checkSectionFiling();
         boolean actualResult = objConstructorPage.checkSectionFiling();
         Assert.assertTrue(actualResult);

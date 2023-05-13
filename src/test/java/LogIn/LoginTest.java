@@ -43,8 +43,9 @@ public class LoginTest {
     public void LogInFromLogInAccountButtonOnLoginPageTest() {
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.fillAllFieldsAndClick(true, "zhanna.test@mail.ru", "Zhanna12345");
-        objLoginPage.waitLoginPage();
-        Assert.assertEquals(LoginPage.LOGIN_PAGE_URL, driver.getCurrentUrl());
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        constructorPage.waitForLoadPage();
+        Assert.assertTrue(constructorPage.isConstructorPageDisplayed());
     }
 
     @Test
@@ -56,7 +57,7 @@ public class LoginTest {
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.fillAllFieldsAndClick(false, "zhanna.test@mail.ru", "Zhanna12345");
         objConstructorPage.waitForLoadPage();
-        Assert.assertEquals(ConstructorPage.CONSTRUCTOR_PAGE_URL, driver.getCurrentUrl());
+        Assert.assertTrue(objConstructorPage.isConstructorPageDisplayed());
     }
 
     @Test
@@ -68,7 +69,7 @@ public class LoginTest {
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.fillAllFieldsAndClick(false, "zhanna.test@mail.ru", "Zhanna12345");
         objConstructorPage.waitForLoadPage();
-        Assert.assertEquals(ConstructorPage.CONSTRUCTOR_PAGE_URL, driver.getCurrentUrl());
+        Assert.assertTrue(objConstructorPage.isConstructorPageDisplayed());
     }
 
     @Test
@@ -80,7 +81,7 @@ public class LoginTest {
         objLoginPage.fillAllFieldsAndClick(false, "zhanna.test@mail.ru", "Zhanna12345");
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.waitForLoadPage();
-        Assert.assertEquals(ConstructorPage.CONSTRUCTOR_PAGE_URL, driver.getCurrentUrl());
+        Assert.assertTrue(objConstructorPage.isConstructorPageDisplayed());
 
     }
 

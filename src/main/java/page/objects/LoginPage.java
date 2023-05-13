@@ -11,6 +11,7 @@ public class LoginPage {
     private final By EMAIL_FIELD = By.xpath(".//label[text()='Email']/../input");
     private final By PASSWORD_FIELD = By.xpath(".//label[text()='Пароль']/../input");
     private final By LOGIN_BUTTON = By.xpath(".//button[text()='Войти']");
+    private final By HEADER_LOGIN = By.xpath(".//h2[text()='Вход']");
     private final WebDriver driver;
 
     public LoginPage(WebDriver driver) {
@@ -34,4 +35,9 @@ public class LoginPage {
         driver.findElement(PASSWORD_FIELD).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
     }
+    @Step("Проверка отображения страницы входа")
+    public boolean isLoginPageDisplayed(){
+        return driver.findElement(HEADER_LOGIN).isDisplayed();
+    }
+
 }
