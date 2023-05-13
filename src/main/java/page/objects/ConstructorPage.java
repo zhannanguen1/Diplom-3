@@ -9,9 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ConstructorPage {
     private static final By BUN_TAB = By.xpath("//span[text()='Булки']");
-    private static final By VISIBILITY_SECTION_CONSTRUCTOR_SAUCE = By.xpath(".//h2[text()='Соусы']");
-    private static final By VISIBILITY_SECTION_CONSTRUCTOR_FILING = By.xpath(".//h2[text()='Начинки']");
-    private static final By VISIBILITY_SECTION_CONSTRUCTOR_BUN = By.xpath(".//h2[text()='Булки']");
     public static String CONSTRUCTOR_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
     private final WebDriver driver;
     private final By LOGIN_ACCOUNT_BUTTON = By.xpath(".//p[text()='Личный Кабинет']");
@@ -19,6 +16,7 @@ public class ConstructorPage {
     private final By CREATE_ORDER = By.xpath(".//button[text()='Оформить заказ']");
     private final By FILING_TAB = By.xpath(".//span[text()='Начинки']");
     private final By SAUCE_TAB = By.xpath(".//span[text()='Соусы']");
+    private static final By CURRENT_MENU = By.xpath("//div[contains(@class,'tab_tab__1SPyG tab_tab_type_current__2BEPc')]");
 
     public ConstructorPage(WebDriver driver) {
         this.driver = driver;
@@ -66,24 +64,13 @@ public class ConstructorPage {
         driver.findElement(SAUCE_TAB).click();
     }
 
-    @Step("Проверка на видимость раздела Начинки в самом конструкторе")
-    public boolean checkSectionFiling() {
-        return driver.findElement(VISIBILITY_SECTION_CONSTRUCTOR_FILING).isDisplayed();
-    }
-
-    @Step("Проверка на видимость раздела Соусы в самом конструкторе")
-    public boolean checkSectionSauce() {
-        return driver.findElement(VISIBILITY_SECTION_CONSTRUCTOR_SAUCE).isDisplayed();
-    }
-
-    @Step("Проверка на видимость раздела Булки в самом конструкторе")
-    public boolean checkSectionBun() {
-        return driver.findElement(VISIBILITY_SECTION_CONSTRUCTOR_BUN).isDisplayed();
-    }
-
     @Step("Проверка отображения страницы конструктора после авторизации")
     public boolean isConstructorPageDisplayed(){
         return driver.findElement(CREATE_ORDER).isDisplayed();
+    }
+    @Step("Check current section")
+    public String getTextFromSelectedMenu() {
+        return driver.findElement(CURRENT_MENU).getText();
     }
 
 }

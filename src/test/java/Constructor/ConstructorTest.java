@@ -9,7 +9,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import page.objects.ConstructorPage;
+
 
 @RunWith(Parameterized.class)
 public class ConstructorTest {
@@ -34,6 +36,8 @@ public class ConstructorTest {
     public void setUp() {
         System.setProperty(webDriver, driverPath);
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        new WebDriverWait(driver, 5);
     }
 
     @Test
@@ -41,11 +45,9 @@ public class ConstructorTest {
     public void checkBunTab() {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
-        objConstructorPage.clickOnSauceTab();
+        objConstructorPage.clickOnFilingTab();
         objConstructorPage.clickOnBunTab();
-        objConstructorPage.checkSectionFiling();
-        boolean actualResult = objConstructorPage.checkSectionBun();
-        Assert.assertTrue(actualResult);
+        Assert.assertEquals("Булки", objConstructorPage.getTextFromSelectedMenu());
     }
 
     @Test
@@ -54,9 +56,7 @@ public class ConstructorTest {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
         objConstructorPage.clickOnSauceTab();
-        objConstructorPage.checkSectionFiling();
-        boolean actualResult = objConstructorPage.checkSectionSauce();
-        Assert.assertTrue(actualResult);
+        Assert.assertEquals("Соусы", objConstructorPage.getTextFromSelectedMenu());
     }
 
     @Test
@@ -64,11 +64,8 @@ public class ConstructorTest {
     public void checkFilingTab() {
         ConstructorPage objConstructorPage = new ConstructorPage(driver);
         objConstructorPage.open();
-        objConstructorPage.clickOnSauceTab();
         objConstructorPage.clickOnFilingTab();
-        objConstructorPage.checkSectionFiling();
-        boolean actualResult = objConstructorPage.checkSectionFiling();
-        Assert.assertTrue(actualResult);
+        Assert.assertEquals("Начинки", objConstructorPage.getTextFromSelectedMenu());
     }
 
     @After
