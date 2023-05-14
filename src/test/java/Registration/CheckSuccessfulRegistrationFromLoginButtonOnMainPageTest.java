@@ -63,7 +63,6 @@ public class CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest {
 
         LoginPage objLoginPage = new LoginPage(driver);
         objLoginPage.waitLoginPage();
-        objLoginPage.waitLoginPage();
         Assert.assertTrue(objLoginPage.isLoginPageDisplayed());
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
         API.LoginUser loginUser = new API.LoginUser(email, password);
