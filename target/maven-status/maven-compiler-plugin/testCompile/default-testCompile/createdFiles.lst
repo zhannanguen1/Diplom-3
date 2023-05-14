@@ -1,0 +1,7 @@
+LogIn\LoginTest.class
+Registration\InvalidPasswordTest.class
+Constructor\ConstructorTest.class
+LogOut\LogoutTest.class
+Transition\GoToPersonalAccountTest.class
+Registration\CheckSuccessfulRegistrationFromLoginButtonOnMainPageTest.class
+Transition\GoToConstructorPageFromPersonalAccountPageTest.class
